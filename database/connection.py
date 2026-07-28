@@ -14,25 +14,23 @@ class DatabaseConnection:
         self.driver = os.getenv("DRIVER")
         self.trusted_connection = os.getenv("TRUSTED_CONNECTION")
 
-    def get_connection(self):
+    def _build_connection_string(self):
         connection_string = (
         f"DRIVER={{{self.driver}}};"
         f"SERVER={self.server};"
         f"DATABASE={self.database};"
         f"Trusted_Connection={self.trusted_connection};"
     )
-    
-        return pyodbc.connect(connection_string)
+        return connection_string
+
+    def get_connection(self):
+        return pyodbc.connect(self._build_connection_string())
+        
 
     def test_connection(self):
         try:
-            conn = self.get_connection()
-
-            # print("Connected successfully!")
-            return True
-            
-
-            conn.close()
-
+            with self.get_connection():
+                return True
         except Exception as e:
             print(e)
+            return False
