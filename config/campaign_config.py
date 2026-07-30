@@ -20,8 +20,8 @@ class Question:
     # max_revenue:Optional[float]=None
     # min_avg_order_value:Optional[float]=None
     fav_stores:List[str] = field(default_factory=list)
-    stores: List[str] = field(default_factory=list)
-    products:List[str] = field(default_factory=list)
+    # stores: List[str] = field(default_factory=list)
+    # products:List[str] = field(default_factory=list)
     enabled:bool=True
 
 @dataclass
