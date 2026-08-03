@@ -61,7 +61,7 @@ class Repository:
         try:
             conn=self.db.get_connection()
             cursor=conn.cursor()
-            cursor.executemany(query,params)
+            cursor.execute_many(query,params)
             conn.commit()
         except Exception as e:
             if conn:
