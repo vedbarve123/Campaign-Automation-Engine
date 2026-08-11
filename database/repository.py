@@ -73,6 +73,21 @@ class Repository:
                 cursor.close()
             if conn:
                 conn.close()
+
+    def get_control_group(self):
+        return self.fetch_dataframe(
+        "SELECT mobile FROM control_group"
+        )
+
+    def get_exclusion_sms(self):
+        return self.fetch_dataframe(
+            "SELECT mobile FROM exclusion_sms"
+        )
+
+    def get_exclusion_wa(self):
+        return self.fetch_dataframe(
+            "SELECT mobile FROM exclusion_wa"
+        )
             
             
 
