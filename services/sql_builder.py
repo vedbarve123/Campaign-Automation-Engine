@@ -19,7 +19,7 @@ class SQLBuilder:
     
     def _build_from(self)->str:
         return """
-        FROM RetailCo.customer_single_view
+        FROM dbo.customer_single_view
     """
     
     def _build_where(self,question:Question)->str:

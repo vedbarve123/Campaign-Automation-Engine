@@ -32,7 +32,7 @@ class PreviewEngine:
     def _deduplicate(self, df, assigned_mobiles):
         return df[~df["mobile"].isin(assigned_mobiles)]
     
-    def _process_question(self, campaign, question_no, question, df,control_group,exclusion_sms,exclusion_wa):
+    def _process_question(self, campaign,question_no,question,df,control_group,exclusion_wa,exclusion_sms):
         base_df = df[~df["mobile"].isin(control_group["mobile"])]
         delwa_df = base_df[~base_df["mobile"].isin(exclusion_wa["mobile"])]
         delsms_df = base_df[~base_df["mobile"].isin(exclusion_sms["mobile"])]
