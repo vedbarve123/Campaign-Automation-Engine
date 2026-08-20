@@ -44,7 +44,7 @@ class SQLBuilder:
             sql_recency=",".join(recency_value)
             
             conditions.append(
-                f"recency IN ({sql_recency})"
+                f"recency_segment IN ({sql_recency})"
             )
 
         if question.fav_stores:
@@ -55,7 +55,7 @@ class SQLBuilder:
             sql_fav_stores=",".join(fav_stores)
             
             conditions.append(
-                f"fav_stores IN ({sql_fav_stores})"
+                f"favorite_store IN ({sql_fav_stores})"
             )
 
         if question.min_frequency is not None:
@@ -65,12 +65,12 @@ class SQLBuilder:
         
         if question.min_quantity is not None:
             conditions.append(
-                f"quantity >= {question.min_quantity}"
+                f"total_quantity >= {question.min_quantity}"
             )
 
         if question.min_revenue is not None:
             conditions.append(
-                f"revenue >= {question.min_revenue}"
+                f"total_revenue >= {question.min_revenue}"
             )
 
 
